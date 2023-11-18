@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #mapid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
 
+
+<body>
+    <div id="mapid" style="width: 100%; height: 100%;"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+
+        //定义地图拉伸尺寸
+        var mymap = L.map('mapid', {
+            maxZoom: 6,
+            minZoom: 3,
+            maxBounds: [[0, 0], [100, 125]],
+        }).setView([70, 65], 5);
+
+
+
+
+        //神前川地图图层
+        var imageUrl = 'Images/Map_KSK.jpg'; 
+        var imageBounds = [[0, 0], [100, 125]];
+        var imageOverlay = L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
+
+
+var myIcon = L.DivIcon.extend({
+    options: {
+    className: "",
+    iconSize:     [70, 70], // size of the icon
+    iconAnchor:   [35, 35], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -35], // point from which the popup should open relative to the iconAnchor
+    }
+});
+
+
+
+var ShiratoriJinjyaIcon = new myIcon({html: '<center><img src="Icon/shiratori_shrine.png"/><br></center>'})
+
+        //放置Icon
+        const shiratori = L.marker([70.35, 66.3], {icon: ShiratoriJinjyaIcon}).addTo(mymap).bindPopup("白鸟神社");
+
+
+
+        // // 在地图初始化后立即调用invalidateSize
+        mymap.invalidateSize();
+        {
+            attribution:'&copy; <a href="https://mapicons.mapsmarker.com">Maps Icons Collection</a> contributors'
+        } 
+
+        // 当窗口大小改变时，再次调用invalidateSize以适应新大小
+        window.addEventListener('resize', function() {
+            mymap.invalidateSize();
+        });
+    </script>
+</body>
+</html>
