@@ -52,16 +52,34 @@ var myIcon = L.DivIcon.extend({
 var ShiratoriJinjyaIcon = new myIcon({html: '<center><img src="Icon/shiratori_shrine.png"/><br></center>'})
 //学校（中小学）
 var SchoolIcon = new myIcon({html: '<center><img src="Icon/school.png"/><br></center>'})
+//公园
+var ParkIcon = new myIcon({html: '<center><img src="Icon/park.png"/><br></center>'})
+var AmusementParkIcon = new myIcon({html: '<center><img src="Icon/amusement_park.png"/><br></center>'})
+//机场
+var AirportIcon = new myIcon({html: '<center><img src="Icon/airport.png"/><br></center>'})
 
-        //放置Icon
+
+        //放置Icon -------------------[↑上, →右]
         //<!-- 神社 -->
         const shiratori = L.marker([70.35, 66.3], {icon: ShiratoriJinjyaIcon}).addTo(mymap).bindPopup("白鸟神社");
 
         //<!-- 学校 -->
         //京女
-        const School_01 = L.marker([73.57, 64], {icon: SchoolIcon}).addTo(mymap).bindPopup("京九宿女子学园 <a href='https://sites.google.com/view/amaterasu-story/%E4%B8%96%E7%95%8C%E8%A7%82/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD/%E4%BA%AC%E4%B9%9D%E5%AE%BF%E5%A5%B3%E5%AD%90%E5%AD%A6%E5%9B%AD'>前往>></a>");
+        const School_01 = L.marker([73.57, 64], {icon: SchoolIcon}).addTo(mymap).bindPopup("京九宿女子学园 <a href='https://sites.google.com/view/amaterasu-story/%E4%B8%96%E7%95%8C%E8%A7%82/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD/%E4%BA%AC%E4%B9%9D%E5%AE%BF%E5%A5%B3%E5%AD%90%E5%AD%A6%E5%9B%AD'target='_blank'>前往>></a>");
+        //神高
+        const School_02 = L.marker([73.45, 64.9], {icon: SchoolIcon}).addTo(mymap).bindPopup("神前川都立高等学校 <a href='https://sites.google.com/view/amaterasu-story/%E4%B8%96%E7%95%8C%E8%A7%82/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD%E7%AB%8B%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1'target='_blank'>前往>></a>");
+        
+        //<!-- 公园 -->
+        //日原观海公园
+        const park_01 = L.marker([68.2, 78.6], {icon: ParkIcon}).addTo(mymap).bindPopup("日原观海公园");
+        //关海摩天轮
+        const AmusementPark_01 = L.marker([66.3, 75.1], {icon: AmusementParkIcon}).addTo(mymap).bindPopup("关海摩天轮");
 
-
+        //<!-- 机场 --> 
+        //神前川国际机场
+        const airport_01 = L.marker([64.8, 74.4], {icon: AirportIcon}).addTo(mymap).bindPopup("神前川国际机场");
+        //丹瀧国际机场
+        const airport_02 = L.marker([72.5, 87], {icon: AirportIcon}).addTo(mymap).bindPopup("丹瀧国际机场");
 
         // // 在地图初始化后立即调用invalidateSize
         mymap.invalidateSize();
