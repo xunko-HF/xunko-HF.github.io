@@ -51,7 +51,7 @@ var myIcon = L.DivIcon.extend({
 //白鸟神社
 var ShiratoriJinjyaIcon = new myIcon({html: '<center><img src="Icon/shiratori_shrine.png"/><br></center>'})
 //学校（中小学）
-//var SchoolIcon = new myIcon({html: '<center><img src="Icon/school.png"/><br></center>'})
+var SchoolIcon = new myIcon({html: '<center><img src="Icon/school.png"/><br></center>'})
 
         //放置Icon
         //<!-- 神社 -->
@@ -59,7 +59,7 @@ var ShiratoriJinjyaIcon = new myIcon({html: '<center><img src="Icon/shiratori_sh
 
         //<!-- 学校 -->
         //京女
-        const School_01 = L.marker([73.57, 64], {icon: ShiratoriJinjyaIcon}).addTo(mymap).bindPopup("京九宿女子学园 <a href='https://sites.google.com/view/amaterasu-story/%E4%B8%96%E7%95%8C%E8%A7%82/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD/%E4%BA%AC%E4%B9%9D%E5%AE%BF%E5%A5%B3%E5%AD%90%E5%AD%A6%E5%9B%AD'>前往>></a>");
+        const School_01 = L.marker([73.57, 64], {icon: SchoolIcon}).addTo(mymap).bindPopup("京九宿女子学园 <a href='https://sites.google.com/view/amaterasu-story/%E4%B8%96%E7%95%8C%E8%A7%82/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD/%E4%BA%AC%E4%B9%9D%E5%AE%BF%E5%A5%B3%E5%AD%90%E5%AD%A6%E5%9B%AD'>前往>></a>");
 
 
 
