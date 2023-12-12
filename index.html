@@ -126,9 +126,9 @@ var imageUrl = 'Images/Map_KSK.jpg';
 var imageBounds = [[0, 0], [100, 125]];
 //var imageOverlay = L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
     //<!-- 地图类型（行政，地铁，地形） -->
-    var administrativeMap = L.imageOverlay(imageUrl, imageBounds)
-    var metroMap = L.imageOverlay('Images/Map_KSK.jpg', imageBounds)
-    var topographicMap = L.imageOverlay('Images/Map_KSK.jpg', imageBounds)
+    var administrativeMap = L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
+    var metroMap = L.imageOverlay('Images/Map_KSK.jpg', imageBounds);
+    var topographicMap = L.imageOverlay('Images/Map_KSK.jpg', imageBounds);
     //<!-- 切换展示地图类型（行政，地铁，地形） -->
         var chooseMaps = {
         "行政图": administrativeMap,
