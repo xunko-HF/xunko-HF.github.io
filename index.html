@@ -31,10 +31,7 @@
 
 
 
-        //神前川地图图层
-        var imageUrl = 'Images/Map_KSK.jpg'; 
-        var imageBounds = [[0, 0], [100, 125]];
-        var imageOverlay = L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
+
 
 
 var myIcon = L.DivIcon.extend({
@@ -59,27 +56,86 @@ var AmusementParkIcon = new myIcon({html: '<center><img src="Icon/amusement_park
 var AirportIcon = new myIcon({html: '<center><img src="Icon/airport.png"/><br></center>'})
 
 
-        //放置Icon -------------------[↑上, →右]
-        //<!-- 神社 -->
-        const shiratori = L.marker([70.35, 66.3], {icon: ShiratoriJinjyaIcon}).addTo(mymap).bindPopup("白鸟神社");
 
-        //<!-- 学校 -->
-        //京女
-        const School_01 = L.marker([73.57, 64], {icon: SchoolIcon}).addTo(mymap).bindPopup("京九宿女子学园 <a href='https://sites.google.com/view/amaterasu-story/%E4%B8%96%E7%95%8C%E8%A7%82/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD/%E4%BA%AC%E4%B9%9D%E5%AE%BF%E5%A5%B3%E5%AD%90%E5%AD%A6%E5%9B%AD'target='_blank'>前往>></a>");
-        //神高
-        const School_02 = L.marker([73.45, 64.9], {icon: SchoolIcon}).addTo(mymap).bindPopup("神前川都立高等学校 <a href='https://sites.google.com/view/amaterasu-story/%E4%B8%96%E7%95%8C%E8%A7%82/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD%E7%AB%8B%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1'target='_blank'>前往>></a>");
-        
+//放置Icon -------------------[↑上, →右]
+    //<!-- 餐饮 -->
+    var restaurant = L.layerGroup([]);
+
+
+    //<!-- 商业 -->
+    var shop = L.layerGroup([]);
+
+
+    //<!-- 娱乐 -->
+    var entertainment = L.layerGroup([]);
+
+
+    //<!-- 旅游景点 -->
+
+        //<!-- 神社 -->
+            const shiratori = L.marker([70.35, 66.3], {icon: ShiratoriJinjyaIcon}).addTo(mymap).bindPopup("白鸟神社");
+
         //<!-- 公园 -->
-        //日原观海公园
-        const park_01 = L.marker([68.2, 78.6], {icon: ParkIcon}).addTo(mymap).bindPopup("日原观海公园");
-        //关海摩天轮
-        const AmusementPark_01 = L.marker([66.3, 75.1], {icon: AmusementParkIcon}).addTo(mymap).bindPopup("关海摩天轮");
+            //日原观海公园
+            const park_01 = L.marker([68.2, 78.6], {icon: ParkIcon}).addTo(mymap).bindPopup("日原观海公园");
+            //关海摩天轮
+            const AmusementPark_01 = L.marker([66.3, 75.1], {icon: AmusementParkIcon}).addTo(mymap).bindPopup("关海摩天轮");
+
+    var touristAttraction = L.layerGroup([shiratori, park_01, AmusementPark_01]);
+
+    //<!-- 教育 -->
+
+        //<!-- 高中 -->
+            //京女
+            const School_01 = L.marker([73.57, 64], {icon: SchoolIcon}).addTo(mymap).bindPopup("京九宿女子学园 <a href='https://sites.google.com/view/amaterasu-story/%E4%B8%96%E7%95%8C%E8%A7%82/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD/%E4%BA%AC%E4%B9%9D%E5%AE%BF%E5%A5%B3%E5%AD%90%E5%AD%A6%E5%9B%AD'target='_blank'>前往>></a>");
+            //神高
+            const School_02 = L.marker([73.45, 64.9], {icon: SchoolIcon}).addTo(mymap).bindPopup("神前川都立高等学校 <a href='https://sites.google.com/view/amaterasu-story/%E4%B8%96%E7%95%8C%E8%A7%82/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD/%E7%A5%9E%E5%89%8D%E5%B7%9D%E9%83%BD%E7%AB%8B%E9%AB%98%E7%AD%89%E5%AD%A6%E6%A0%A1'target='_blank'>前往>></a>");
+        
+    var education = L.layerGroup([School_01, School_02]);
+
+    //<!-- 办公 -->
+    var workbuilding = L.layerGroup([]);
+
+    //<!-- 交通 -->
 
         //<!-- 机场 --> 
-        //神前川国际机场
-        const airport_01 = L.marker([64.8, 74.4], {icon: AirportIcon}).addTo(mymap).bindPopup("神前川国际机场");
-        //丹瀧国际机场
-        const airport_02 = L.marker([72.5, 87], {icon: AirportIcon}).addTo(mymap).bindPopup("丹瀧国际机场");
+            //神前川国际机场
+            const airport_01 = L.marker([64.8, 74.4], {icon: AirportIcon}).addTo(mymap).bindPopup("神前川国际机场");
+            //丹瀧国际机场
+            const airport_02 = L.marker([72.5, 87], {icon: AirportIcon}).addTo(mymap).bindPopup("丹瀧国际机场");
+
+    var transit = L.layerGroup([airport_01, airport_02]);
+
+
+
+
+//地图分层 <餐饮，商业，娱乐，旅游景点，教育，办公，交通>
+var overlayMaps = {
+    "餐饮": restaurant,
+    "商业": shop,
+    "娱乐": entertainment,
+    "旅游景点": touristAttraction,
+    "教育": education,
+    "办公": workbuilding,
+    "交通": transit,
+
+};
+
+//神前川地图图层
+var imageUrl = 'Images/Map_KSK.jpg'; 
+var imageBounds = [[0, 0], [100, 125]];
+//var imageOverlay = L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
+    //<!-- 地图类型（行政，地铁，地形） -->
+    var administrativeMap = L.imageOverlay(imageUrl, imageBounds)
+    var metroMap = L.imageOverlay('Images/Map_KSK.jpg', imageBounds)
+    var topographicMap = L.imageOverlay('Images/Map_KSK.jpg', imageBounds)
+    //<!-- 切换展示地图类型（行政，地铁，地形） -->
+        var chooseMaps = {
+        "行政图": administrativeMap,
+        "地铁图": metroMap,
+        "地形图": topographicMap
+        };
+
 
         // // 在地图初始化后立即调用invalidateSize
         mymap.invalidateSize();
